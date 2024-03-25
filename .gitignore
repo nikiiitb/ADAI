@@ -2,6 +2,8 @@
 __pycache__/
 *.py[cod]
 *$py.class
+SSBD/
+clipping_ssbd_videos-master/
 
 # C extensions
 *.so
