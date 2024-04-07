@@ -15,7 +15,7 @@ tracker = Sort()
 colors = np.random.randint(0 , 256 , size=(10,3))
 
 vid_location = "./SSBD/videos/"
-out_location = "./inputs"
+out_location = "./inputs/full"
 
 vid_names = [f for f in listdir(vid_location) if isfile(join(vid_location, f))]
 vids = [join(vid_location, f) for f in vid_names]
@@ -34,15 +34,15 @@ vid_outs = [join(out_location, f) for f in vid_names]
 # ]
 
 # vid_outs = [
-#     # "./inputs/v_ArmFlapping_01.avi",
-#     # "./inputs/v_ArmFlapping_02.avi",
-#     # "./inputs/v_ArmFlapping_03.avi",
-#     # "./inputs/v_HeadBanging_01.avi",
-#     # "./inputs/v_HeadBanging_02.avi",
-#     # "./inputs/v_HeadBanging_03.avi",
-#     # "./inputs/v_Spinning_01.avi",
-#     # "./inputs/v_Spinning_02.avi",
-#     "./inputs/v_Spinning_04.avi",
+#     # "./inputs/full/v_ArmFlapping_01.avi",
+#     # "./inputs/full/v_ArmFlapping_02.avi",
+#     # "./inputs/full/v_ArmFlapping_03.avi",
+#     # "./inputs/full/v_HeadBanging_01.avi",
+#     # "./inputs/full/v_HeadBanging_02.avi",
+#     # "./inputs/full/v_HeadBanging_03.avi",
+#     # "./inputs/full/v_Spinning_01.avi",
+#     # "./inputs/full/v_Spinning_02.avi",
+#     "./inputs/full/v_Spinning_04.avi",
 # ]
 
 for vid , vid_out in zip(vids , vid_outs):
