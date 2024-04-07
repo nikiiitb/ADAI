@@ -4,6 +4,9 @@ import numpy as np
 from ultralytics import YOLO
 from sort_master.sort import Sort
 
+from os import listdir
+from os.path import isfile, join
+
 model = YOLO("yolov8n.pt")
 detection_threshold = 0.60
 OUTPUT_SHAPE = (224,224)
@@ -11,29 +14,36 @@ OUTPUT_SHAPE = (224,224)
 tracker = Sort()
 colors = np.random.randint(0 , 256 , size=(10,3))
 
-vids = [
-    # "./SSBD/videos/v_ArmFlapping_01.avi",
-    # "./SSBD/videos/v_ArmFlapping_02.avi",
-    # "./SSBD/videos/v_ArmFlapping_03.avi",
-    # "./SSBD/videos/v_HeadBanging_01.avi",
-    # "./SSBD/videos/v_HeadBanging_02.avi",
-    # "./SSBD/videos/v_HeadBanging_03.avi",
-    # "./SSBD/videos/v_Spinning_01.avi",
-    # "./SSBD/videos/v_Spinning_02.avi",
-    "./SSBD/videos/v_Spinning_04.avi",
-]
+vid_location = "./SSBD/videos/"
+out_location = "./inputs"
 
-vid_outs = [
-    # "./inputs/v_ArmFlapping_01.avi",
-    # "./inputs/v_ArmFlapping_02.avi",
-    # "./inputs/v_ArmFlapping_03.avi",
-    # "./inputs/v_HeadBanging_01.avi",
-    # "./inputs/v_HeadBanging_02.avi",
-    # "./inputs/v_HeadBanging_03.avi",
-    # "./inputs/v_Spinning_01.avi",
-    # "./inputs/v_Spinning_02.avi",
-    "./inputs/v_Spinning_04.avi",
-]
+vid_names = [f for f in listdir(vid_location) if isfile(join(vid_location, f))]
+vids = [join(vid_location, f) for f in vid_names]
+vid_outs = [join(out_location, f) for f in vid_names]
+
+# vids = [
+#     # "./SSBD/videos/v_ArmFlapping_01.avi",
+#     # "./SSBD/videos/v_ArmFlapping_02.avi",
+#     # "./SSBD/videos/v_ArmFlapping_03.avi",
+#     # "./SSBD/videos/v_HeadBanging_01.avi",
+#     # "./SSBD/videos/v_HeadBanging_02.avi",
+#     # "./SSBD/videos/v_HeadBanging_03.avi",
+#     # "./SSBD/videos/v_Spinning_01.avi",
+#     # "./SSBD/videos/v_Spinning_02.avi",
+#     "./SSBD/videos/v_Spinning_04.avi",
+# ]
+
+# vid_outs = [
+#     # "./inputs/v_ArmFlapping_01.avi",
+#     # "./inputs/v_ArmFlapping_02.avi",
+#     # "./inputs/v_ArmFlapping_03.avi",
+#     # "./inputs/v_HeadBanging_01.avi",
+#     # "./inputs/v_HeadBanging_02.avi",
+#     # "./inputs/v_HeadBanging_03.avi",
+#     # "./inputs/v_Spinning_01.avi",
+#     # "./inputs/v_Spinning_02.avi",
+#     "./inputs/v_Spinning_04.avi",
+# ]
 
 for vid , vid_out in zip(vids , vid_outs):
     vid = cv2.VideoCapture(vid)
